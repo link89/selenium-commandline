@@ -23,6 +23,10 @@
     "url": "https://github.com/link89/selenium-commandline/issues"
   },
   "homepage": "https://github.com/link89/selenium-commandline#readme",
+  "keywords": [
+    "selenium",
+    "pm2"
+  ],
   "dependencies": {
     "commander": "^8.0.0",
     "got": "^11.8.2",
