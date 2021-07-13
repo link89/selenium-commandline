@@ -19,13 +19,19 @@ You can either download drivers manually, or use the provsion utility. To use th
 downloads:
   - url: https://some.storage/path/to/chromedriver
     file: chromedriver
+
+  - url: https://some.storage/path/to/geckodriver
+    file: geckodriver
 ```
 
+And then you can use the `selenium-cli provision config.yaml` to download drivers for you.
+
 Note: It doesn't support unzip compressed file automatically.
+TODO: Support post download commands.
 
 ### Start Server
 Before you start server, make user dirvers can be found in the global path or current working directoy.
-You can use the command to start the server
+Then you can use the following command to run standalone server:
 
 `selenium-cli standalone`
 
