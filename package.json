@@ -1,0 +1,22 @@
+{
+  "name": "selenium-commandline",
+  "version": "0.0.1",
+  "description": "Wrapper to install and start Selenium via npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/link89/selenium-commandline.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/link89/selenium-commandline/issues"
+  },
+  "homepage": "https://github.com/link89/selenium-commandline#readme",
+  "dependencies": {
+    "pm2": "^5.1.0"
+  }
+}
