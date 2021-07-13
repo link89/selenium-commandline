@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/link89/selenium-commandline#readme",
   "dependencies": {
+    "commander": "^8.0.0",
     "pm2": "^5.1.0"
   }
 }
