@@ -29,5 +29,5 @@ You can use the command to start the server
 
 `selenium-cli standalone`
 
-And then you can find the service in `pm2` with
-
+It use `pm2` to manage the process. You can find the service in `pm2` with `pm2 ps` command.
+If you didn't install `pm2` before, you need to run `npm install -g pm2` first.
