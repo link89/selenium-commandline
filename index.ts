@@ -15,6 +15,8 @@ program
   .command("standalone")
   .description("start selenium standalone server in pm2")
   .option("-n, --name <string>", "name in pm2", "selenium-standalone-server")
+  .option("-d, --dry-run", "print command without running", false)
+  .argument('[args...]')
   .action(startStandalone);
 
 program

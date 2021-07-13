@@ -14,6 +14,7 @@ interface InstallOptions {
 
 interface StartOptions {
   name: string;
+  dryRun: boolean;
 }
 
 function isInstall() {
@@ -29,10 +30,16 @@ export async function install(downloadUrl: string = DEFAULT_DOWNLOAD_URL, opts: 
   await downloadFile(downloadUrl, SELENIUM_SERVER_PATH);
 }
 
-export async function startStandalone(opts: StartOptions) {
+export async function startStandalone(args: string[], opts: StartOptions) {
   if (!isInstall()) {
     console.error(`Install selenium server with "selenium-cli install" first!`)
     process.exitCode = 1;
+    return;
+  }
+
+  console.log("pass though options:", args);
+
+  if (opts.dryRun) {
     return;
   }
 
@@ -44,7 +51,8 @@ export async function startStandalone(opts: StartOptions) {
         return reject(err);
       }
       pm2.start({
-        script: `java -jar ${SELENIUM_SERVER_PATH} standalone`,
+        script: `java`,
+        args: ['-jar', SELENIUM_SERVER_PATH, 'standalone', ...args],
         name: opts.name,
       }, (err, apps) => {
         if (err) {
@@ -66,6 +74,7 @@ export async function provision(configFile: string) {
   for(const download of config.downloads) {
     if(fs.existsSync(download.file as string) && !config.reinstall) {
       console.log(`file ${download.file} has been downloaded, skiped.`);
+      continue;
     }
     await downloadFile(download.url as string, download.file as string);
   }
