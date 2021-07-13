@@ -1,7 +1,8 @@
-import { download } from "./lib";
+import { downloadFile } from "./lib";
 import * as fs from "fs";
 import { join, sep } from "path";
 import pm2 from "pm2";
+import { loadProvision } from "./schema";
 
 const DEFAULT_DOWNLOAD_URL = 'https://selenium-release.storage.googleapis.com/4.0-beta-4/selenium-server-4.0.0-beta-4.jar';
 const SELENIUM_SERVER_PATH = process.env.TEST_SELENIUM_SERVER_PATH
@@ -25,10 +26,10 @@ export async function install(downloadUrl: string = DEFAULT_DOWNLOAD_URL, opts: 
     return;
   }
   console.log(`start to download: ${downloadUrl} to ${SELENIUM_SERVER_PATH}`);
-  await download(downloadUrl, SELENIUM_SERVER_PATH);
+  await downloadFile(downloadUrl, SELENIUM_SERVER_PATH);
 }
 
-export async function start(opts: StartOptions) {
+export async function startStandalone(opts: StartOptions) {
   if (!isInstall()) {
     console.error(`Install selenium server with "selenium-cli install" first!`)
     process.exitCode = 1;
@@ -58,4 +59,14 @@ export async function start(opts: StartOptions) {
       });
     });
   });
+}
+
+export async function provision(configFile: string) {
+  const config = loadProvision(configFile);
+  for(const download of config.downloads) {
+    if(fs.existsSync(download.file as string) && !config.reinstall) {
+      console.log(`file ${download.file} has been downloaded, skiped.`);
+    }
+    await downloadFile(download.url as string, download.file as string);
+  }
 }

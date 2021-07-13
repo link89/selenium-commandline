@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { install, start } from "./commands";
+import { install, provision, startStandalone } from "./commands";
 
 const BIN_PATH = __filename
 
@@ -12,11 +12,15 @@ program
   .action(install);
 
 program
-  .command("start")
+  .command("standalone")
   .description("start selenium standalone server in pm2")
-  .option("-n, --name <string>", "name in pm2", "selenium-server")
-  .action(start);
+  .option("-n, --name <string>", "name in pm2", "selenium-standalone-server")
+  .action(startStandalone);
 
+program
+  .command("provision <config>")
+  .description("provision drivers according to the configuration file")
+  .action(provision);
 
 (async () => {
   await program.parseAsync(process.argv);

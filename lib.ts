@@ -4,7 +4,7 @@ import { promisify } from "util";
 import * as stream from "stream";
 const pipeline = promisify(stream.pipeline);
 
-export async function download(fromUrl: string, toFile: string) {
+export async function downloadFile(fromUrl: string, toFile: string) {
   const downloadStream = got.stream(fromUrl);
   const fileWriterStream = createWriteStream(toFile);
 
