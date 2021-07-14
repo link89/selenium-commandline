@@ -7,6 +7,9 @@
     "bin",
     "dist"
   ],
+  "bin": {
+      "selenium-cli": "./bin/selenium-cli"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "git clean -xdf -e node_modules && tsc",
