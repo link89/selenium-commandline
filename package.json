@@ -1,6 +1,6 @@
 {
   "name": "selenium-commandline",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Wrapper to install and start Selenium via npm",
   "main": "dist/index.js",
   "files": [
@@ -8,7 +8,7 @@
     "dist"
   ],
   "bin": {
-      "selenium-cli": "./bin/selenium-cli"
+    "selenium-cli": "./bin/selenium-cli"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
