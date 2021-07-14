@@ -61,7 +61,7 @@ export async function startStandalone(args: string[], opts: StartOptions) {
           process.exitCode = 1;
           return reject(err);
         }
-        console.log(`success to start ${opts.name} in pm2, check detail with "pm2 show ${opts.name}"`);
+        console.log(`success to start ${opts.name}, for more detail run "pm2 show ${opts.name}"`);
         pm2.disconnect();
         resolve(apps);
       });
