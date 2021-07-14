@@ -26,7 +26,7 @@ downloads:
 
 And then you can use the `selenium-cli provision config.yaml` to download drivers for you.
 
-Note: It doesn't support unzip compressed file automatically.
+Note: It doesn't support unzip compressed file automatically.  
 TODO: Support post download commands.
 
 ### Start Server
@@ -37,3 +37,7 @@ Then you can use the following command to run standalone server:
 
 It use `pm2` to manage the process. You can find the service in `pm2` with `pm2 ps` command.
 If you didn't install `pm2` before, you need to run `npm install -g pm2` first.
+
+You can also pass the option to selenium server by set them after the `--`, for example 
+
+`selenium-cli standalone -- --port 5555`
