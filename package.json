@@ -1,6 +1,6 @@
 {
   "name": "selenium-commandline",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Wrapper to install and start Selenium via npm",
   "main": "dist/index.js",
   "files": [
