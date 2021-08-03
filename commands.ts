@@ -53,8 +53,9 @@ export async function startStandalone(args: string[], opts: StartOptions) {
       pm2.start({
         script: `java`,
         args: ['-jar', SELENIUM_SERVER_PATH, 'standalone', ...args],
+        windowsHide: false,
         name: opts.name,
-      }, (err, apps) => {
+      } as any, (err, apps) => {
         if (err) {
           console.error(err);
           pm2.disconnect();
